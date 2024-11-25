@@ -31,27 +31,12 @@ function App() {
   const handleSearch = (event) => {setFilter(event.target.value)}
   const filteredContacts = contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase()));
 
-
-  //Add contact
-  const addContact = (newContact) => {
-    setContacts((prevContacts) => {
-      return [...prevContacts, newContact]
-    })
-  }
-
-  //Delete contact
-  const deleteContact = (contactId) => {
-    setContacts((prevContacts) => {
-      return prevContacts.filter((contact) => contact.id !== contactId)
-    })
-  }
-
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addContact}/>
+      <ContactForm/>
       <SearchBox value={filter} handleSearch={handleSearch}/>
-      <ContactList contacts={filteredContacts} onDelete={deleteContact}/>
+      <ContactList contacts={filteredContacts} />
     </div>
   );
 }
